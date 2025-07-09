@@ -48,10 +48,8 @@ For your second milestone, explain what you've worked on since your previous mil
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CaCazFBhYKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 For your first milestone, describe what your project is and how you plan to build it. You can include:
-- An explanation about the different components of your project and how they will all integrate together
-- Technical progress you've made so far
-- Challenges you're facing and solving in your future milestones
-- What your plan is to complete your project
+
+As I started trying to comprehend the massive project I chose, I decided to set my first milestone to something simple: build my robot. I gathered up the courage to lift open the lid to the medium size box, revealing the chassis just waiting for me to assemble it. I grabbed the two bases and poured out all the shafts, screws and wheels. It seemed so simple, yet it took me almost 2 hours just to assemble it. I started by first getting the motors on, but after I did that, I realized I used the wrong motors. They didn't have wires that I could connect to my motor drivers. I disassembled the pieces holding the motors one by one, glad my teacher helped me catch this mistake before I essentially closed off that area of the chassis. Another small issue I faced after the motor disaster was the 2nd base of the chassis. I put it the wrong way, almost cracking the plastic, before realizing that I had it flipped. I noticed this because I saw 4 holes on the left side, whereas there were 3 on the right, signs that suggested the correct way to assemble it. After getting over the kinks, I started placing my Arduino Uno, breadboards, and motor drivers, using my past experiences with wiring in FTC Robotics to avoid poor wire management. My plan to complete this project is to continue with the robot and work on the BlueTooth aspects, since its wiring and schematics are more complicated than the assembly of the chassis.
 
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
