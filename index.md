@@ -1,6 +1,9 @@
 Gesture Controlled Robot
 Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
 
+A gesture controlled robot. Sounds like a budget sci-fi movie device, existing in a plethora of movies, yet it can exist in our very real world. When I was offered to try and tackle the challenges to create a gesture controlled robot, I knew I had to take the chance. The learning experiences it would provide me would be insanely valuable, so I prepared myself to take the challenge head on. The project consisted of two simple components: a chassis and hand component, yet the hardest part for me was understanding the wiring! It turns out the curse of confusing wiring from Robotics was back to haunt me again. As I made attempts to perfect the wiring, energy became a new issue, overloading my motor drivers and circuits. Even though these issues had me hitting my head against a wall, I persisted, using different variations to find a wiring more effective for me. After almost a week of trying, I finally knew I found it.    
+
+
 You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
 ```HTML 
 <!--- This is an HTML comment in Markdown -->
@@ -31,26 +34,15 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 # Second Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="879" height="494" src="https://www.youtube.com/embed/L-6tVIwTw7c" title="Arjit S Milestone 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-For your second milestone, explain what you've worked on since your previous milestone. You can highlight: (BLUETOOTH MODULE)
 
 In this milestone, I decided that there were two main components I wanted to complete for it: the gesture component and the BlueTooth module pairing. Arguably, the BlueTooth module pairing is the most significant, as it is a huge part in the communication between the gesture component and the robot. To create the gesture control portion, I wired up all the components together to make them work. Once I plugged in the batteries, I knew that my wiring was successful because of the red glow of the LED's. Now, this is where the complicated stuff came into place. BlueTooth wiring. First, I had to correctly wire the BlueTooth modules (Specifically RX and TX pins --- related to transmission and receival of digital signals) to the Arduino Nano and Uno, forcing me to change my wiring. I struggled to fit my fingers through the gaps of all my other wiring, shoving Ohms resistors into the correct pins to have a good voltage for the BlueTooth module. I even had to demolish my gesture component and move it to a longer breadboard, since the one I wanted to use it on was too tiny to fit the correct wiring for the BlueTooth module. After getting the base wiring complete, I needed to figure out why my BlueTooth modules weren't remaining in AT command mode, which was essential to move forward with my pairing. It turns out, however, I needed to adjust my wiring of the BlueTooth module connected to my Arduino Uno, because the ground voltage for the power module and the Uno were actually slightly different, creating discrepancies in power that was received. Once I made that fix, the BlueTooth module started flashing properly, signaling a correct connection. After confirming correct wiring and code, I managed to synthesize a proper connection between the modules, confirming it with the simple message "hi" displaying in the opposite Serial Monitor! For my final milestone, I really want to complete my code and modifications, since they are the last remaining steps for me to take before I can truly call this project complete.
 
-- Technical details of what you've accomplished and how they contribute to the final goal
-- What has been surprising about the project so far
-- Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone 
 
 # First Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="879" height="494" src="https://www.youtube.com/embed/O0JBTSoajUw" title="Arjit S Milestone 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-For your first milestone, describe what your project is and how you plan to build it. You can include:
 
 As I started trying to comprehend the massive project I chose, I decided to set my first milestone to something simple: build my robot. I gathered up the courage to lift open the lid to the medium size box, revealing the chassis just waiting for me to assemble it. I grabbed the two bases and poured out all the shafts, screws and wheels. It seemed so simple, yet it took me almost 2 hours just to assemble it. I started by first getting the motors on, but after I did that, I realized I used the wrong motors. They didn't have wires that I could connect to my motor drivers. I disassembled the pieces holding the motors one by one, glad my teacher helped me catch this mistake before I essentially closed off that area of the chassis. Another small issue I faced after the motor disaster was the 2nd base of the chassis. I put it the wrong way, almost cracking the plastic, before realizing that I had it flipped. I noticed this because I saw 4 holes on the left side, whereas there were 3 on the right, signs that suggested the correct way to assemble it. After getting over the kinks, I started placing my Arduino Uno, breadboards, and motor drivers, using my past experiences with wiring in FTC Robotics to avoid poor wire management. After getting the Arduino set up, I decided to tackle the task of wiring the BlueTooth module and the motor drivers. After much trial and error of moving around components for ease of mind, I decided on a layout that placed the Arduino and breadboard on opposite sides, while the motor drivers stayed on the sides. After wiring up everything, I ran the code and saw that my wiring had been successful in moving the motors! I decided that the next logical step for me would be to start building the gesture component and managing the BlueTooth connections between modules.
 
