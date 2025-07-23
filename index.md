@@ -24,18 +24,11 @@ You should comment out all portions of your portfolio that you have not complete
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-
+-IN PROGRESS-
 For this final milestone, I had my eyes set on the code and my modifications. I was right at the end of the tunnel, ready to embrace a completely personal, working project. To start, I decided that it was time to really get the code working. I tested the accelerometer, making sure it was reading the correct coordinates and giving back the correct commands, such as 'f' for forward. Once I was confident it was functional, I looked towards the BlueTooth signaling, tinkering with it to send commands at a steady rate so the robot's Arduino wouldn't go crazy. After making sure it was working, I paired up the two parts and started moving the robot, which worked! 
 I was so excited until I realized that my wheels were spinning in incorrect directions. I thought it would be an easy fix: just move the wires connected to the motor drivers, yet it was so much more than that. Days went by where the robot kept making erratic movements, incorrect wheel movement, or even just not working at all, so I knew I needed to really break it down. I took the motor drivers off and tested them rigorously, checking each one to make sure that they were fully functional. It was a breath of fresh air once I knew they were functional, so I decided that I would scrap my Breadboard "substation" idea, giving each motor driver pin their own Arduino pin. This slightly complicated the code, but it worked. My motor drivers were finally functional, so I decided now would be the best time to start my modifications: acceleration and brake lights. The lights were relatively straightforward. I took one of my breadboards and used my final 2 Arduino pins to separate the left lights and right lights, allowing me to add turn indicators (I could flash them on and off when I call a turn function!). For acceleration, however, I needed to look more at my code. 
 The reason acceleration is code related is because the motors really only operate at 5V and 0V (On and Off). To bypass this, I used Pulse with Modulation (PWM) to basically turn the motor on and off extremely quickly. This essentially allowed me to slow the motors even more, which made it move slower based on certain commands. I used analog write to enable the PWM, and that would wrap up the project for me!
 I have learned a lot from this project, such as coding up Arduinos, BlueTooth connections via HC-05, wiring, and even smaller things like grounding two different power supplies together. It was a great experience to face all these challenges and learn essential debugging skills, while also learning valuable lessons about wiring and proper management of code and Arduino connections. 
-
-For your final milestone, explain the outcome of your project. Key details to include are:
-- What you've accomplished since your previous milestone
-- What your biggest challenges and triumphs were at BSE
-- A summary of key topics you learned about
-- What you hope to learn in the future after everything you've learned at BSE
-
 
 
 # Second Milestone
