@@ -20,8 +20,6 @@ You should comment out all portions of your portfolio that you have not complete
   
 # Final Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 For this final milestone, I had my eyes set on the code and my modifications. I was right at the end of the tunnel, ready to embrace a completely personal, working project. To start, I decided that it was time to really get the code working. I tested the accelerometer, making sure it was reading the correct coordinates and giving back the correct commands, such as 'f' for forward. Once I was confident it was functional, I looked towards the BlueTooth signaling, tinkering with it to send commands at a steady rate so the robot's Arduino wouldn't go crazy. After making sure it was working, I paired up the two parts and started moving the robot, which worked! 
