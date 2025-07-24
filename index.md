@@ -48,10 +48,13 @@ I noticed this because I saw 4 holes on the left side, whereas there were 3 on t
 
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
+*Wiring for the BlueTooth module for the hand component*
+<img width="964" height="810" alt="image" src="https://github.com/user-attachments/assets/50157b3b-4a64-4ea9-bf40-5e3a4edec45e" />
+*Wiring of the Arduino Uno, the BlueTooth module, and the motor driver(s). The motor driver in the image is essentially two L9110 H-Bridge as one*
+<img width="1281" height="872" alt="image" src="https://github.com/user-attachments/assets/0c22f59a-6e74-4466-b03f-b9b014da53c0" />
+
 
 # Code
-Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
-
 ```c++
 HAND CODE:
 
@@ -517,6 +520,6 @@ Don't forget to place the link of where to buy each component inside the quotati
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
+| Arduino Nano | Runs the code from the Robot code and sends signals based on received commands | $27.60 | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"](https://store-usa.arduino.cc/products/arduino-uno-rev3?utm_source=google&utm_medium=cpc&utm_campaign=US-Pmax&gad_source=1&gad_campaignid=21317508903&gbraid=0AAAAACbEa87qC4WR-82AfZo1iTkiN8ML1&gclid=Cj0KCQjws4fEBhD-ARIsACC3d29C9gyzvAPeczTjYNeq_pI-Um8P6sUbH71no3tcQeS7VsgZ_zq3YIoaAiL1EALw_wcB)"> Link </a> |
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
