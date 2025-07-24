@@ -24,7 +24,6 @@ You should comment out all portions of your portfolio that you have not complete
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
--IN PROGRESS-
 For this final milestone, I had my eyes set on the code and my modifications. I was right at the end of the tunnel, ready to embrace a completely personal, working project. To start, I decided that it was time to really get the code working. I tested the accelerometer, making sure it was reading the correct coordinates and giving back the correct commands, such as 'f' for forward. Once I was confident it was functional, I looked towards the BlueTooth signaling, tinkering with it to send commands at a steady rate so the robot's Arduino wouldn't go crazy. After making sure it was working, I paired up the two parts and started moving the robot, which worked! 
 I was so excited until I realized that my wheels were spinning in incorrect directions. I thought it would be an easy fix: just move the wires connected to the motor drivers, yet it was so much more than that. Days went by where the robot kept making erratic movements, incorrect wheel movement, or even just not working at all, so I knew I needed to really break it down. I took the motor drivers off and tested them rigorously, checking each one to make sure that they were fully functional. It was a breath of fresh air once I knew they were functional, so I decided that I would scrap my Breadboard "substation" idea, giving each motor driver pin their own Arduino pin. This slightly complicated the code, but it worked. My motor drivers were finally functional, so I decided now would be the best time to start my modifications: acceleration and brake lights. The lights were relatively straightforward. I took one of my breadboards and used my final 2 Arduino pins to separate the left lights and right lights, allowing me to add turn indicators (I could flash them on and off when I call a turn function!). For acceleration, however, I needed to look more at my code. 
 The reason acceleration is code related is because the motors really only operate at 5V and 0V (On and Off). To bypass this, I used Pulse with Modulation (PWM) to basically turn the motor on and off extremely quickly. This essentially allowed me to slow the motors even more, which made it move slower based on certain commands. I used analog write to enable the PWM, and that would wrap up the project for me!
@@ -56,15 +55,461 @@ Here's where you'll put images of your schematics. [Tinkercad](https://www.tinke
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
 ```c++
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  Serial.println("Hello World!");
+HAND CODE:
+
+#include <SoftwareSerial.h>
+const int rx = 3;
+
+const int tx =2;
+
+char dir;
+
+
+int distance = 0; 
+SoftwareSerial BT_Serial(rx, tx);
+
+
+//available (BT_Serial) - if there are bytes available on buffer ready to be processed to be sent to Arduino
+
+#include <Wire.h> // I2C communication library
+
+const int MPU = 0x68; // I2C address of the MPU6050 accelerometer
+int16_t AcX, AcY, AcZ;
+
+int flag=0;
+
+
+void setup () {// put your setup code here, to run once
+
+Serial.begin(38400); // start serial communication at 9600bps
+BT_Serial.begin(38400); 
+
+// Initialize interface to the MPU6050
+Wire.begin();
+Wire.beginTransmission(MPU);
+Wire.write(0x6B);
+Wire.write(0);
+Wire.endTransmission(true);
+
+delay(500); 
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop () {
+//BT_Serial.write('f');
+Read_accelerometer(); // Read MPU6050 accelerometer
+/*
+if(AcX<70  && flag==0){flag=1; BT_Serial.write('f');}
+if(AcX>130 && flag==0){flag=1; BT_Serial.write('b');}
+      
+if(AcY<60  && flag==0){flag=1; BT_Serial.write('l'); }
+if(AcY>110 && flag==0){flag=1; BT_Serial.write('r');}
+*/
 
+if ((AcX > 35 && AcX < 70) &&flag == 0) {
+  flag = 2; 
+  BT_Serial.write('f');
+  Serial.write('f');
+  Serial.write('\n');
+  delay(100);
+} else if ((AcX > 0 && AcX <= 35) && flag == 2) {
+  flag = 1; 
+  BT_Serial.write('g'); // going fast
+  Serial.write('g');
+  Serial.write('\n');
+  delay(100);
+} else if ((AcX > 130 && AcX < 150) && flag == 0) {
+  flag = 2; 
+  BT_Serial.write('b');
+  Serial.write('b');
+  Serial.write('\n');
+  delay(100);
+} else if ((AcX >= 150) && flag == 2) {
+  flag = 1; 
+  BT_Serial.write('v'); // very backwards
+  Serial.write('v');
+  Serial.write('\n');
+  delay(100);
+} else if ((AcY > 35 && AcY < 60) && flag == 0) {
+  flag = 2; 
+  BT_Serial.write('l');
+  Serial.write('l');
+  Serial.write('\n');
+  delay(100);
+} else if ((AcY > 0 && AcY <= 35) && flag == 2) {
+  flag = 1; 
+  BT_Serial.write('k'); // hard left
+  Serial.write('k');
+  Serial.write('\n');
+  delay(100);
+} else if ((AcY > 110 && AcY < 130) && flag == 0) {
+  flag = 2; 
+  BT_Serial.write('r');
+  Serial.write('r');
+  Serial.write('\n');
+  delay(100);
+} else if ((AcY >= 130) && flag == 2) {
+  flag = 1; 
+  BT_Serial.write('q'); // quick right
+  Serial.write('q');
+  Serial.write('\n');
+  delay(100);
+} else if ((AcX > 90 && AcX < 120) && (AcY > 80 && AcY < 110) && (flag == 1 || flag==2)) {
+  flag = 0;
+  BT_Serial.write('s');
+  
+  Serial.write('\n');
+  delay(100);  
+}
+
+}
+
+void Read_accelerometer(){
+      // Read the accelerometer data
+Wire.beginTransmission(MPU);
+Wire.write(0x3B); // Start with register 0x3B (ACCEL_XOUT_H)
+Wire.endTransmission(false);
+Wire.requestFrom(MPU, 6, true); // Read 6 registers total, each axis value is stored in 2 registers
+
+AcX = Wire.read() << 8 | Wire.read(); // X-axis value
+AcY = Wire.read() << 8 | Wire.read(); // Y-axis value
+AcZ = Wire.read() << 8 | Wire.read(); // Z-axis value
+
+AcX = map(AcX, -17000, 17000, 0, 180);
+AcY = map(AcY, -17000, 17000, 0, 180);
+AcZ = map(AcZ, -17000, 17000, 0, 180);
+/*
+Serial.print(AcX);
+Serial.print("\t");
+Serial.print(AcY);
+Serial.print("\t");
+Serial.println(AcZ); 
+delay(100);
+*/
+
+}
+
+ROBOT CODE: 
+
+#include <SoftwareSerial.h>
+const int rx = 3;
+
+const int tx =2;
+
+SoftwareSerial BT_Serial(rx, tx);
+
+//BAUD RATE HAS TO BE 38400!!
+//BT_Serial is for the connection between Arduino and BlueTooth
+//Serial is Computer to Arduino
+
+//#define enA 10//Enable1 L298 Pin enA 
+#define in1 6 //MOTOR FRONT RIGHT (A) PIN (POSITIVE PIN) //FORWARDS PIN
+#define in2 7 //MOTOR FRONT RIGHT (A) PIN (NEGATIVE PIN) //BACKWARDS PIN 
+
+#define in3 8 //MOTOR FRONT LEFT (B) PIN (NEGATIVE PIN) //FORWARDS PIN
+#define in4 9 //MOTOR FRONT LEFT (B) PIN (POSITIVE PIN) //BACKWARDS PIN
+
+#define in5 10 //MOTOR BACK RIGHT (B) PIN (POSITIVE PIN) //FORWARDS PIN
+#define in6 11 //MOTOR BACK RIGHT (B) PIN (NEGATIVE PIN) //BACKWARDS PIN
+
+#define in7 4 //MOTOR BACK LEFT (A) PIN (NEGATIVE PIN) //FORWARDS PIN
+#define in8 5 //MOTOR BACK LEFT (A) PIN (POSITIVE PIN) //BACKWARDS PIN
+
+#define ledPinRight 12 //LED PIN ON THE RIGHT
+#define ledPinLeft 13 //LED PIN ON THE LEFT
+
+//#define enB 5 //Enable2 L298 Pin enB 
+
+bool turning = false;
+char bt_data = ""; // variable to receive data from the serial port
+int Speed; //Write The Duty Cycle 0 to 255 Enable Pins for Motor Speed  
+
+void setup() { // put your setup code here, to run once
+
+
+
+Serial.begin(38400); // start serial communication at 9600bps
+//BT_Serial.setTimeout(50);
+BT_Serial.begin(38400); 
+
+//pinMode(enA, OUTPUT); // declare as output for L298 Pin enA 
+pinMode(in1, OUTPUT); // declare as output for L298 Pin in1 
+pinMode(in2, OUTPUT); // declare as output for L298 Pin in2 
+pinMode(in3, OUTPUT); // declare as output for L298 Pin in3   
+pinMode(in4, OUTPUT); // declare as output for L298 Pin in4 
+pinMode(in5, OUTPUT);
+pinMode(in6, OUTPUT);
+pinMode(in7, OUTPUT);
+pinMode(in8, OUTPUT);
+pinMode(ledPinRight, OUTPUT);
+pinMode(ledPinLeft, OUTPUT);
+/*
+Serial.println("forward");
+forward(255);
+delay(5000);
+Stop();
+delay(255);
+Serial.println("backward");
+backward(255);
+delay(5000);
+Serial.println("right");
+turnRight(255);
+delay(5000);
+Serial.println("left");
+turnLeft(150);
+delay(5000);
+Stop();
+Serial.println("stop");
+*/
+//delay(2550);
+//backward();
+
+
+
+//pinMode(enB, OUTPUT); // declare as output for L298 Pin enB 
+
+delay(200);
+}
+
+void loop(){
+     
+  if(BT_Serial.available() > 0){  //if some date is sent, reads it and saves in state     
+    bt_data = BT_Serial.read(); 
+    Serial.println(bt_data);          
+  }
+
+
+  if(bt_data == 'f'){
+    turning = false;
+    forward(255); 
+    ledsOff();
+  }  // if the bt_data is 'f' the DC motor will go forward
+  else if (bt_data == 'g'){
+    turning = false;
+    forward(255);
+    ledsOff();
+  }
+  else if(bt_data == 'b'){
+    turning = false;
+    backward(255);
+    ledsOff(); 
+  }  // if the bt_data is 'b' the motor will Reverse
+  else if(bt_data == 'v'){ 
+    turning = false;
+    backward(255); 
+    ledsOff();
+  } 
+  else if(bt_data == 'l'){
+    turning = true;
+    leftLeds();
+    turnLeft(255); 
+  }   // if the bt_data is 'l' the motor will turn left
+  else if(bt_data == 'k'){
+    turning = true;
+    leftLeds();
+    turnLeft(255); 
+  } 
+  else if(bt_data == 'r'){
+    turning = true;
+    rightLeds();
+    turnRight(255);
+  } // if the bt_data is 'r' the motor will turn right
+  else if(bt_data == 'q'){
+    turning = true;
+    rightLeds();
+    turnRight(255); 
+  } 
+  else if(bt_data == 's'){
+    turning = false;
+    ledsOn();
+    Stop(); 
+  } 
+
+// if the bt_data 's' the motor will Stop
+//analogWrite(enA, Speed); // Write The Duty Cycle 0 to 255 Enable Pin A for Motor1 Speed 
+//analogWrite(enB, Speed); // Write The Duty Cycle 0 to 255 Enable Pin B for Motor2 Speed 
+delay(50);
+}
+/*
+#define in1 6 //MOTOR FRONT RIGHT (A) PIN (POSITIVE PIN) //FORWARDS PIN
+#define in2 7 //MOTOR FRONT RIGHT (A) PIN (NEGATIVE PIN) //BACKWARDS PIN 
+
+#define in3 8 //MOTOR FRONT LEFT (B) PIN (POSITIVE PIN) //FORWARDS PIN
+#define in4 9 //MOTOR FRONT LEFT (B) PIN (NEGATIVE PIN) //BACKWARDS PIN
+
+#define in5 10 //MOTOR BACK RIGHT (B) PIN (POSITIVE PIN) //FORWARDS PIN
+#define in6 11 //MOTOR BACK RIGHT (B) PIN (NEGATIVE PIN) //BACKWARDS PIN
+
+#define in7 4 //MOTOR BACK LEFT (A) PIN (POSITIVE PIN) //FORWARDS PIN
+#define in8 5 //MOTOR BACK LEFT (A) PIN (NEGATIVE PIN) //BACKWARDS PIN
+*/
+/*
+void forward(){
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  //THIS MOTOR GOES OPPOSITE BUT WHY DOES IT WORK...?
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
+
+  digitalWrite(in5, LOW);
+  digitalWrite(in6, HIGH);
+  //THIS GOES OPPOSITE BUT WHY DOES IT WORK...?
+  digitalWrite(in7, LOW);
+  digitalWrite(in8, HIGH);
+}
+
+//THIS TURNS RIGHT
+//void backward(){ //backword
+
+
+
+
+
+//void turnRight(){
+void turnRight(){ //turnRight
+//LEFT MOTOR
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+//RIGHT MOTOR
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
+//LEFT MOTOR
+  digitalWrite(in5, LOW);
+  digitalWrite(in6, LOW);
+//RIGHT MOTOR
+  digitalWrite(in7, LOW);
+  digitalWrite(in8, HIGH);
+}
+
+//THIS GOES FORWARD
+//void turnLeft(){ //turnLeft
+
+void turnLeft(){
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+//RIGHT MOTOR
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+//LEFT MOTOR
+  digitalWrite(in5, LOW);
+  digitalWrite(in6, HIGH);
+//RIGHT MOTOR
+  digitalWrite(in7, LOW);
+  digitalWrite(in8, LOW);
+}
+
+
+void Stop(){ //stop
+digitalWrite(in1, LOW); //Right Motor forward Pin 
+digitalWrite(in2, LOW); //Right Motor backward Pin 
+digitalWrite(in3, LOW); //Left Motor backward Pin 
+digitalWrite(in4, LOW); //Left Motor forward Pin
+digitalWrite(in5, LOW); //Right Motor forward Pin 
+digitalWrite(in6, LOW); //Right Motor backward Pin 
+digitalWrite(in7, LOW); //Left Motor backward Pin 
+digitalWrite(in8, LOW); 
+}
+
+
+void motorTest(){
+  digitalWrite(in5, HIGH);
+  digitalWrite(in6, LOW);
+  digitalWrite(in7, HIGH);
+  digitalWrite(in8, LOW);
+
+}
+*/
+
+void forward(int speed) {
+  // Front motors forward
+  analogWrite(in1, speed);    digitalWrite(in2, LOW);   // FR
+  digitalWrite(in3, LOW);     analogWrite(in4, speed);  // FL
+
+  // Back motors reversed to go forward
+  analogWrite(in5, LOW);    digitalWrite(in6, speed);   // BR reversed
+  digitalWrite(in7, LOW);     analogWrite(in8, speed);  // BL reversed
+}
+/*
+void backward(){
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
+
+  digitalWrite(in5, HIGH);
+  digitalWrite(in6, LOW);
+
+  digitalWrite(in7, HIGH);
+  digitalWrite(in8, LOW);
+}
+*/
+void backward(int speed) {
+  // Front motors backward
+  digitalWrite(in1, LOW);     analogWrite(in2, speed);  // FR
+  analogWrite(in3, speed);    digitalWrite(in4, LOW);   // FL
+
+  // Back motors forward (inverted to match front)
+  digitalWrite(in5, speed);     analogWrite(in6, LOW);  // BR
+  analogWrite(in7, speed);    digitalWrite(in8, LOW);   // BL
+}
+
+void turnLeft(int speed) {
+  // Right side forward
+  analogWrite(in1, speed);    digitalWrite(in2, LOW);   // FR
+  digitalWrite(in3, LOW);     digitalWrite(in4, LOW);   // FL off
+
+  // Right side back reversed
+  analogWrite(in5, LOW);    digitalWrite(in6, speed);   // BR reversed
+  digitalWrite(in7, LOW);     digitalWrite(in8, LOW);   // BL off
+}
+
+void turnRight(int speed) {
+  // Left side forward
+  digitalWrite(in1, LOW);     digitalWrite(in2, LOW);   // FR off
+  digitalWrite(in3, LOW);     analogWrite(in4, speed);  // FL
+
+  // Left side back reversed
+  digitalWrite(in5, LOW);     digitalWrite(in6, LOW);   // BR off
+  digitalWrite(in7, LOW);     analogWrite(in8, speed);  // BL reversed
+}
+
+void Stop() {
+  digitalWrite(in1, LOW); digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW); digitalWrite(in4, LOW);
+  digitalWrite(in5, LOW); digitalWrite(in6, LOW);
+  digitalWrite(in7, LOW); digitalWrite(in8, LOW);
+}
+
+void ledsOn(){
+  digitalWrite(ledPinRight, HIGH);
+  digitalWrite(ledPinLeft, HIGH);
+}
+void ledsOff(){
+  digitalWrite(ledPinRight, LOW);
+  digitalWrite(ledPinLeft, LOW);
+}
+void leftLeds(){
+  digitalWrite(ledPinRight, LOW);
+    digitalWrite(ledPinLeft, HIGH);
+    delay(100);
+    digitalWrite(ledPinLeft, LOW);
+    delay(100);
+    digitalWrite(ledPinLeft, HIGH);
+    delay(100);
+    digitalWrite(ledPinLeft, LOW);
+
+
+}
+void rightLeds(){
+  digitalWrite(ledPinLeft, LOW);
+
+    digitalWrite(ledPinRight, HIGH);
+    delay(100);
+    digitalWrite(ledPinRight, LOW);
+    delay(100);
+    digitalWrite(ledPinRight, HIGH);
+    delay(100);
+    digitalWrite(ledPinRight, LOW);
 }
 ```
 
@@ -77,11 +522,3 @@ Don't forget to place the link of where to buy each component inside the quotati
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-
-# Other Resources/Examples
-One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
-- [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
-- [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
-- [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
-
-To watch the BSE tutorial on how to create a portfolio, click here.
