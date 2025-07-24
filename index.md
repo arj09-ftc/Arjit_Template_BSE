@@ -530,7 +530,7 @@ Don't forget to place the link of where to buy each component inside the quotati
 | HC-05 BlueTooth Module | Acts as communicator between the Robot and Hand Component | $9.99 | <a href="[https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/](https://shorturl.at/kUeho)"> Link </a> |
 | Robot Base Chassis | The base needed to mount your Arduino Uno, breadboard (if necessary), BlueTooth Module, and Motor driver | $19.99 | <a href="[https://tinyurl.com/2s2zrzbj](https://shorturl.at/zRonm)"> Link </a> |
 | Solderless Breadboard + Wires | Provides wires for component connection and a BreadBoard for additional space (if necessary) | $9.99 | <a href="[https://tinyurl.com/2s2zrzbj](https://shorturl.at/WvhCy)"> Link </a> |
-| IMU (Inertial Measurement Unit) | Positioning (Angular) readings that are then translated to movement in the code | $10.99 | <a href="[https://tinyurl.com/2s2zrzbj](https://shorturl.at/irqai)"> Link </a> |
-| 9V Batteries | Power for the hand and robot component | $12.69 | <a href="[https://tinyurl.com/2s2zrzbj](https://shorturl.at/OZk6w)"> Link </a> |
+| IMU (Inertial Measurement Unit) | Positioning (Angular) readings that are then translated to movement in the code | $10.99 | <a href="[[https://tinyurl.com/2s2zrzbj](https://shorturl.at/irqai)](https://tinyurl.com/4hpejjkp)"> Link </a> |
+| 9V Batteries | Power for the hand and robot component | $12.69 | <a href="[[https://tinyurl.com/2s2zrzbj](https://shorturl.at/OZk6w)](https://rb.gy/a4zt3e)"> Link </a> |
 
 
