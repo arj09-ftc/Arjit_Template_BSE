@@ -52,6 +52,11 @@ Here's where you'll put images of your schematics. [Tinkercad](https://www.tinke
 <img width="964" height="810" alt="image" src="https://github.com/user-attachments/assets/50157b3b-4a64-4ea9-bf40-5e3a4edec45e" />
 *Wiring of the Arduino Uno, the BlueTooth module, and the motor driver(s). The motor driver in the image is essentially two L9110 H-Bridge as one*
 <img width="1281" height="872" alt="image" src="https://github.com/user-attachments/assets/0c22f59a-6e74-4466-b03f-b9b014da53c0" />
+*Wiring of the HC-05 BlueTooth Module to the Arduino Uno to enable the connection*
+<img width="1641" height="1080" alt="image" src="https://github.com/user-attachments/assets/8bc0f7a6-9c2c-43e4-b8f5-dd75a96c2eba" />
+*Wiring of the HC-05 BlueTooth Module to the Arduino Nano to enable the connection*
+<img width="1672" height="1022" alt="image" src="https://github.com/user-attachments/assets/2273af2c-88d4-4278-b5b5-eee5c319ae0c" />
+
 
 
 # Code
@@ -520,6 +525,12 @@ Don't forget to place the link of where to buy each component inside the quotati
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
-| Arduino Nano | Runs the code from the Robot code and sends signals based on received commands | $27.60 | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"](https://store-usa.arduino.cc/products/arduino-uno-rev3?utm_source=google&utm_medium=cpc&utm_campaign=US-Pmax&gad_source=1&gad_campaignid=21317508903&gbraid=0AAAAACbEa87qC4WR-82AfZo1iTkiN8ML1&gclid=Cj0KCQjws4fEBhD-ARIsACC3d29C9gyzvAPeczTjYNeq_pI-Um8P6sUbH71no3tcQeS7VsgZ_zq3YIoaAiL1EALw_wcB)"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
+| Arduino Uno | Runs the code from the Robot code and sends signals based on received commands | $27.60 | <a href="https://tinyurl.com/2s2zrzbj"> Link </a> |
+| Arduino Nano | Runs the code for the Hand component | $25.70 | <a href="https://tinyurl.com/32v722dz"> Link </a> |
+| HC-05 BlueTooth Module | Acts as communicator between the Robot and Hand Component | $9.99 | <a href="[https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/](https://shorturl.at/kUeho)"> Link </a> |
+| Robot Base Chassis | The base needed to mount your Arduino Uno, breadboard (if necessary), BlueTooth Module, and Motor driver | $19.99 | <a href="[https://tinyurl.com/2s2zrzbj](https://shorturl.at/zRonm)"> Link </a> |
+| Solderless Breadboard + Wires | Provides wires for component connection and a BreadBoard for additional space (if necessary) | $9.99 | <a href="[https://tinyurl.com/2s2zrzbj](https://shorturl.at/WvhCy)"> Link </a> |
+| IMU (Inertial Measurement Unit) | Positioning (Angular) readings that are then translated to movement in the code | $10.99 | <a href="[https://tinyurl.com/2s2zrzbj](https://shorturl.at/irqai)"> Link </a> |
+| 9V Batteries | Power for the hand and robot component | $12.69 | <a href="[https://tinyurl.com/2s2zrzbj](https://shorturl.at/OZk6w)"> Link </a> |
+
+
