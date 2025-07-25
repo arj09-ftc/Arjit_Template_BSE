@@ -47,8 +47,7 @@ I started by first getting the motors on, but after I did that, I realized I use
 I noticed this because I saw 4 holes on the left side, whereas there were 3 on the right, signs that suggested the correct way to assemble it. After getting over the kinks, I started placing my Arduino Uno, breadboards, and motor drivers, using my past experiences with wiring in FTC Robotics to avoid poor wire management. After getting the Arduino set up, I decided to tackle the task of wiring the BlueTooth module and the motor drivers. After much trial and error of moving around components for ease of mind, I decided on a layout that placed the Arduino and breadboard on opposite sides, while the motor drivers stayed on the sides. After wiring up everything, I ran the code and saw that my wiring had been successful in moving the motors! I decided that the next logical step for me would be to start building the gesture component and managing the BlueTooth connections between modules.
 
 # Schematics 
-Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
-*Wiring for the BlueTooth module for the hand component*
+*Wiring for the hand component, including the accelerometer and the BlueTooth module*
 <img width="964" height="810" alt="image" src="https://github.com/user-attachments/assets/50157b3b-4a64-4ea9-bf40-5e3a4edec45e" />
 *Wiring of the Arduino Uno, the BlueTooth module, and the motor driver(s). The motor driver in the image is essentially two L9110 H-Bridge as one*
 <img width="1281" height="872" alt="image" src="https://github.com/user-attachments/assets/0c22f59a-6e74-4466-b03f-b9b014da53c0" />
