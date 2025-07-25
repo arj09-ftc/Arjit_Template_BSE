@@ -56,6 +56,9 @@ Here's where you'll put images of your schematics. [Tinkercad](https://www.tinke
 <img width="1641" height="1080" alt="image" src="https://github.com/user-attachments/assets/8bc0f7a6-9c2c-43e4-b8f5-dd75a96c2eba" />
 *Wiring of the HC-05 BlueTooth Module to the Arduino Nano to enable the connection*
 <img width="1672" height="1022" alt="image" src="https://github.com/user-attachments/assets/2273af2c-88d4-4278-b5b5-eee5c319ae0c" />
+*Example of the wiring on my breadboard*
+<img width="1648" height="1311" alt="image" src="https://github.com/user-attachments/assets/cab071cc-eca0-4028-a13b-901f2ff552bd" />
+
 
 
 
