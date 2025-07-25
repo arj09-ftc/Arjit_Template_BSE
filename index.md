@@ -1,14 +1,8 @@
-Gesture Controlled Robot
+# Gesture Controlled Robot
 
 A gesture controlled robot. Sounds like a budget sci-fi movie device, existing in a plethora of movies, yet it can exist in our very real world. When I was offered to try and tackle the challenges to create a gesture controlled robot, I knew I had to take the chance. The learning experiences it would provide me would be insanely valuable, so I prepared myself to take the challenge head on. The project consisted of two simple components: a chassis and hand component, yet the hardest part for me was understanding the wiring! It turns out the curse of confusing wiring from Robotics was back to haunt me again.
 As I made attempts to perfect the wiring, energy became a new issue, overloading my motor drivers and circuits. Even though these issues had me hitting my head against a wall, I persisted, using different variations to find a wiring more effective for me. After almost a week of trying, I finally knew I found it. Once the base project was complete, I was given the opportunity to look for modifications. To really wrap up this project, I decided acceleration and brake lights were the best way to make this project my own.
 
-
-You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
-```HTML 
-<!--- This is an HTML comment in Markdown -->
-<!--- Anything between these symbols will not render on the published site -->
-```
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
