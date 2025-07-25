@@ -14,10 +14,8 @@ You should comment out all portions of your portfolio that you have not complete
 |:--:|:--:|:--:|:--:|
 | Arjit S | Issaquah Highschool | Electrical Engineering | Incoming Sophomore
 
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
-
-![Headstone Image](logo.svg)
 ![](image0.jpeg)
+
 # Final Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -250,28 +248,6 @@ pinMode(in7, OUTPUT);
 pinMode(in8, OUTPUT);
 pinMode(ledPinRight, OUTPUT);
 pinMode(ledPinLeft, OUTPUT);
-/*
-Serial.println("forward");
-forward(255);
-delay(5000);
-Stop();
-delay(255);
-Serial.println("backward");
-backward(255);
-delay(5000);
-Serial.println("right");
-turnRight(255);
-delay(5000);
-Serial.println("left");
-turnLeft(150);
-delay(5000);
-Stop();
-Serial.println("stop");
-*/
-//delay(2550);
-//backward();
-
-
 
 //pinMode(enB, OUTPUT); // declare as output for L298 Pin enB 
 
@@ -350,83 +326,6 @@ delay(50);
 #define in7 4 //MOTOR BACK LEFT (A) PIN (POSITIVE PIN) //FORWARDS PIN
 #define in8 5 //MOTOR BACK LEFT (A) PIN (NEGATIVE PIN) //BACKWARDS PIN
 */
-/*
-void forward(){
-  digitalWrite(in1, HIGH);
-  digitalWrite(in2, LOW);
-  //THIS MOTOR GOES OPPOSITE BUT WHY DOES IT WORK...?
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, HIGH);
-
-  digitalWrite(in5, LOW);
-  digitalWrite(in6, HIGH);
-  //THIS GOES OPPOSITE BUT WHY DOES IT WORK...?
-  digitalWrite(in7, LOW);
-  digitalWrite(in8, HIGH);
-}
-
-//THIS TURNS RIGHT
-//void backward(){ //backword
-
-
-
-
-
-//void turnRight(){
-void turnRight(){ //turnRight
-//LEFT MOTOR
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, LOW);
-//RIGHT MOTOR
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, HIGH);
-//LEFT MOTOR
-  digitalWrite(in5, LOW);
-  digitalWrite(in6, LOW);
-//RIGHT MOTOR
-  digitalWrite(in7, LOW);
-  digitalWrite(in8, HIGH);
-}
-
-//THIS GOES FORWARD
-//void turnLeft(){ //turnLeft
-
-void turnLeft(){
-  digitalWrite(in1, HIGH);
-  digitalWrite(in2, LOW);
-//RIGHT MOTOR
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, LOW);
-//LEFT MOTOR
-  digitalWrite(in5, LOW);
-  digitalWrite(in6, HIGH);
-//RIGHT MOTOR
-  digitalWrite(in7, LOW);
-  digitalWrite(in8, LOW);
-}
-
-
-void Stop(){ //stop
-digitalWrite(in1, LOW); //Right Motor forward Pin 
-digitalWrite(in2, LOW); //Right Motor backward Pin 
-digitalWrite(in3, LOW); //Left Motor backward Pin 
-digitalWrite(in4, LOW); //Left Motor forward Pin
-digitalWrite(in5, LOW); //Right Motor forward Pin 
-digitalWrite(in6, LOW); //Right Motor backward Pin 
-digitalWrite(in7, LOW); //Left Motor backward Pin 
-digitalWrite(in8, LOW); 
-}
-
-
-void motorTest(){
-  digitalWrite(in5, HIGH);
-  digitalWrite(in6, LOW);
-  digitalWrite(in7, HIGH);
-  digitalWrite(in8, LOW);
-
-}
-*/
-
 void forward(int speed) {
   // Front motors forward
   analogWrite(in1, speed);    digitalWrite(in2, LOW);   // FR
@@ -436,21 +335,7 @@ void forward(int speed) {
   analogWrite(in5, LOW);    digitalWrite(in6, speed);   // BR reversed
   digitalWrite(in7, LOW);     analogWrite(in8, speed);  // BL reversed
 }
-/*
-void backward(){
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);
 
-  digitalWrite(in3, HIGH);
-  digitalWrite(in4, LOW);
-
-  digitalWrite(in5, HIGH);
-  digitalWrite(in6, LOW);
-
-  digitalWrite(in7, HIGH);
-  digitalWrite(in8, LOW);
-}
-*/
 void backward(int speed) {
   // Front motors backward
   digitalWrite(in1, LOW);     analogWrite(in2, speed);  // FR
