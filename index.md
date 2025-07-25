@@ -40,15 +40,14 @@ I noticed this because I saw 4 holes on the left side, whereas there were 3 on t
 
 # Schematics 
 *Wiring for the hand component, including the accelerometer and the BlueTooth module*
-<img width="964" height="810" alt="image" src="https://github.com/user-attachments/assets/50157b3b-4a64-4ea9-bf40-5e3a4edec45e" />
-*Wiring of the Arduino Uno, the BlueTooth module, and the motor driver(s). The motor driver in the image is essentially two L9110 H-Bridge as one*
-<img width="1281" height="872" alt="image" src="https://github.com/user-attachments/assets/0c22f59a-6e74-4466-b03f-b9b014da53c0" />
+<img width="1945" height="1081" alt="image" src="https://github.com/user-attachments/assets/fe07355b-0064-4fd4-ba63-d28dc7e52d61" />
 *Wiring of the HC-05 BlueTooth Module to the Arduino Uno to enable the connection*
 <img width="1641" height="1080" alt="image" src="https://github.com/user-attachments/assets/8bc0f7a6-9c2c-43e4-b8f5-dd75a96c2eba" />
 *Wiring of the HC-05 BlueTooth Module to the Arduino Nano to enable the connection*
 <img width="1672" height="1022" alt="image" src="https://github.com/user-attachments/assets/2273af2c-88d4-4278-b5b5-eee5c319ae0c" />
-*Example of the wiring on my breadboard*
-<img width="1648" height="1311" alt="image" src="https://github.com/user-attachments/assets/cab071cc-eca0-4028-a13b-901f2ff552bd" />
+*Example of my wiring on my project. Colored pairs are pairs of motors with the negative and positive RPM signals*
+<img width="1903" height="1022" alt="image" src="https://github.com/user-attachments/assets/68bc5f73-5915-4eff-b5dd-48c6e0856fdf" />
+
 
 
 
